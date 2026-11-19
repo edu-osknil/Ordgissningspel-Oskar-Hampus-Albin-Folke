@@ -21,9 +21,9 @@ def Compareword(letter, word):
     '''Checks if letter is correct'''
     for i in range(len(word)):
         if word[i] == letter:
-            return i
+            return True
     incorrectHash.add(letter)
-    return -1
+    return False
 
 def PrintWord(word):
     '''Prints the currently found parts of the word'''
@@ -59,7 +59,7 @@ def GameLoop():
         while incorrectGuesses > 0:
             guess = Takeguess()
             guessState = Compareword(guess, word)
-            if guessState == -1:
+            if not guessState:
                 incorrectGuesses -= 1
             else:
                 correctHash.add(guess)
